@@ -11,7 +11,7 @@ export const getAllTasks: Handler = async (req, res, next) => {
     try {
         const tasks = await findAllTasks();
 
-        return res.status(200).json({ tasks });
+        return res.status(200).json(tasks);
 
     } catch (err) {
         next(err);
@@ -31,7 +31,7 @@ export const createTask: Handler = async (req, res, next) => {
         const createdTask = await createNewTask(taskInput);
 
 
-        return res.status(200).json({ task: createdTask });
+        return res.status(200).json(createdTask);
 
 
     } catch (err) {
@@ -57,7 +57,7 @@ export const updateTask: Handler = async (req, res, next) => {
 
         const updatedTask = await updateTaskById(taskId, taskInput);
 
-        return res.status(200).json({ task: updatedTask });
+        return res.status(200).json(updatedTask);
 
 
     } catch (err) {

@@ -1,4 +1,4 @@
-import Express, { } from "express";
+import express, { } from "express";
 import { router } from "./route";
 import { errorHandler } from "./middleware/error-handler.middleware";
 
@@ -9,9 +9,9 @@ const PORT: number = process.env.PORT ? parseInt(process.env.PORT) : 8000;
 
 const startServer = async () => {
 
-    const app = Express();
+    const app = express();
 
-    app.use(Express.json());
+    app.use(express.json());
 
     app.use('/', router);
 

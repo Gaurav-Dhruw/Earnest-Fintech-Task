@@ -14,8 +14,8 @@ export const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
     }
 
     return res.status(500).json({
-        error: err.error,
-        status: err.code,
+        error: "Internal Server Error",
+        status: 500,
         message: "Ops! Something Went Wrong",
     });
 }
