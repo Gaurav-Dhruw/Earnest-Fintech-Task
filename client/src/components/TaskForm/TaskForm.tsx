@@ -5,7 +5,7 @@ import { axiosClient } from '../../libs/axios.lib'
 import { queryClient } from '../../contexts/ProviderWrapper'
 
 
-const createTask = async ({ title, description }: { title: string, description?: string }) => {
+const createTask = async ({ title, description }: { title: string, description?: string | null }) => {
     return axiosClient.post('/tasks/create', {
         title,
         description
@@ -31,7 +31,11 @@ export const TaskForm = () => {
     const handleFormSubmission = (e: FormEvent) => {
         e.preventDefault();
 
-        mutate(formData);
+
+        mutate({
+            title: formData.title,
+            description: formData.description !== "" ? formData.description : null,
+        });
     }
 
     const handleFormData = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
